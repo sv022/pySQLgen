@@ -1,0 +1,1 @@
+INSERT INTO ratings VALUES (rate_code, object_code, rate_date, criteria, rate)

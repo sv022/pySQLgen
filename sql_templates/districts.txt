@@ -1,0 +1,1 @@
+INSERT INTO districts VALUES (code, 'name')

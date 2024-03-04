@@ -1,0 +1,1 @@
+INSERT INTO agents VALUES (code, 'name', 'surname', 'lastname', 'phone')

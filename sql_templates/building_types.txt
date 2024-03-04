@@ -1,0 +1,1 @@
+INSERT INTO building_types VALUES (code, 'name')
