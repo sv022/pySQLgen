@@ -1,4 +1,4 @@
-from random import randint, choice, shuffle
+from random import randint, choice
 from userdata import *
 
 
@@ -8,6 +8,16 @@ def buildings_query():
 
     with open('output.txt', 'w', encoding='utf-8') as f:
         for code, name in zip(data["building_code"], data["building_name"]):
+            new_query = query.replace('code', str(code)).replace('name', name)
+            f.write(f'{new_query}\n')
+
+
+def districts_query():
+    with open(f"sql_templates/districts.txt") as q:
+        query = q.read()
+
+    with open('output.txt', 'w', encoding='utf-8') as f:
+        for code, name in zip(data["district_code"], data["district_name"]):
             new_query = query.replace('code', str(code)).replace('name', name)
             f.write(f'{new_query}\n')
 
@@ -37,8 +47,9 @@ def agents_query():
         query = q.read()
 
     with open('output.txt', 'w', encoding='utf-8') as f:
-        for code, name in zip(data["agent_code"], data["phone"]):
+        for i, (code, name) in enumerate(zip(data["agent_code"], data["phone"])):
             new_query = query.replace('code', str(code)).replace('phone', name)
+            new_query = query.replace('name', f'agent{i}')
             f.write(f'{new_query}\n')
 
 
