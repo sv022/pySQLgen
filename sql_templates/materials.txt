@@ -1,1 +1,1 @@
-INSERT INTO materials VALUES (code, 'name')
+INSERT INTO materials VALUES (code, 'name');

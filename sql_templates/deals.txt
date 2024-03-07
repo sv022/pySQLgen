@@ -1,1 +1,1 @@
-INSERT INTO deals VALUES (deal_code, object_code, 'sell_date', agent_code, price)
+INSERT INTO deals VALUES (deal_code, object_code, 'sell_date', agent_code, price);

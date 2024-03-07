@@ -1,1 +1,1 @@
-INSERT INTO criterea VALUES (code, 'name')
+INSERT INTO criterea VALUES (code, 'name');
