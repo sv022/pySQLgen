@@ -2,7 +2,7 @@ from random import randint, choice
 from userdata import *
 
 
-def buildings_query():
+def buildings_query() -> None:
     with open(f"sql_templates/building_types.txt") as q:
         query = q.read()
 
@@ -12,7 +12,7 @@ def buildings_query():
             f.write(f'{new_query}\n')
 
 
-def districts_query():
+def districts_query() -> None:
     with open(f"sql_templates/districts.txt") as q:
         query = q.read()
 
@@ -22,7 +22,7 @@ def districts_query():
             f.write(f'{new_query}\n')
 
 
-def criterias_query():
+def criterias_query() -> None:
     with open(f"sql_templates/criterea.txt") as q:
         query = q.read()
 
@@ -42,7 +42,7 @@ def materials_query():
             f.write(f'{new_query}\n')
 
 
-def agents_query():
+def agents_query() -> None:
     with open(f"sql_templates/agents.txt") as q:
         query = q.read()
 
@@ -53,7 +53,7 @@ def agents_query():
             f.write(f'{new_query}\n')
 
 
-def random_query(name : str, n : int):
+def random_query(name : str, n : int) -> None:
     """
     random_query() is used for estate_objects, ratings and deals tables.\n
     Before using it, generate all the predetermined queries
@@ -93,3 +93,5 @@ def random_query(name : str, n : int):
                 new_query = new_query.replace('sell_date', choice(data["date"])).replace('agent_code', str(choice(data['agent_code'])))
                 new_query = new_query.replace('price', str(randint(10000, 40000) * 1000))
                 f.write(f'{q_start}VALUES{new_query}\n')
+    else: 
+        raise Exception('No matching query name.')
