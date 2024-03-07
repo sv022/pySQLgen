@@ -1,6 +1,16 @@
 from random import randint, choice
 from userdata import *
 
+def _random_date() -> str: # helper function
+    daysinmonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+    month = randint(1, 12)
+    year = 2000 + randint(10, 24)
+    if year % 4 == 0: daysinmonth[1] += 1
+    day = randint(1, daysinmonth[month - 1])
+
+    return f'{day // 10}{day % 10}.{month // 10}{month % 10}.{year}'
+
 
 def buildings_query() -> None:
     with open(f"sql_templates/building_types.txt") as q:
@@ -72,7 +82,7 @@ def random_query(name : str, n : int) -> None:
                 new_query = new_query.replace("room_number", str(area[1])).replace("area", str(area[0]))
                 new_query = new_query.replace("building_code", str(choice(data["building_code"]))).replace("current_state", str(randint(1, 10) != 7))
                 new_query = new_query.replace("price", str(randint(10000, 40000) * 1000)).replace("descript", f'object description {i}')
-                new_query = new_query.replace("material", str(choice(data["material"])[0])).replace("publish_date", choice(data["date"]))
+                new_query = new_query.replace("material", str(choice(data["material"])[0])).replace("publish_date", _random_date())
 
                 f.write(f'{q_start}VALUES{new_query}\n')
 
@@ -81,7 +91,7 @@ def random_query(name : str, n : int) -> None:
             for i in range(n):
                 new_query = query
                 new_query = new_query.replace('rate_code', str(base_id_rating + i)).replace('object_code', str(base_id_object + randint(0, n - 1)))
-                new_query = new_query.replace('rate_date', choice(data["date"])).replace('criteria', str(choice(data["critera_code"])))
+                new_query = new_query.replace('rate_date', _random_date()).replace('criteria', str(choice(data["critera_code"])))
                 new_query = new_query.replace('rate', str(randint(1, 10)))
                 f.write(f'{q_start}VALUES{new_query}\n')
     
@@ -90,7 +100,7 @@ def random_query(name : str, n : int) -> None:
             for i in range(n):
                 new_query = query
                 new_query = new_query.replace('deal_code', str(base_id_deal + i)).replace('object_code', str(base_id_object + randint(0, n - 1)))
-                new_query = new_query.replace('sell_date', choice(data["date"])).replace('agent_code', str(choice(data['agent_code'])))
+                new_query = new_query.replace('sell_date', _random_date()).replace('agent_code', str(choice(data['agent_code'])))
                 new_query = new_query.replace('price', str(randint(10000, 40000) * 1000))
                 f.write(f'{q_start}VALUES{new_query}\n')
     else: 
