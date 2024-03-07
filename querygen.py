@@ -66,7 +66,11 @@ def agents_query() -> None:
 def random_query(name : str, n : int) -> None:
     """
     random_query() is used for estate_objects, ratings and deals tables.\n
-    Before using it, generate all the predetermined queries
+    Before using it, generate all the predetermined queries\n
+    Avaliable query names:\n
+    estate_objects\n
+    ratings\n
+    deals
     """
     with open(f"sql_templates/{name}.txt") as q:
         query = q.read()
