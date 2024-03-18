@@ -57,9 +57,11 @@ def agents_query() -> None:
         query = q.read()
 
     with open('output.txt', 'w', encoding='utf-8') as f:
-        for i, (code, name) in enumerate(zip(data["agent_code"], data["phone"])):
-            new_query = query.replace('code', str(code)).replace('phone', name)
-            new_query = query.replace('name', f'agent{i}')
+        for i, (code, phone) in enumerate(zip(data["agent_code"], data["phone"])):
+            new_query = query.replace('code', str(code)).replace('phone', phone)
+            new_query = new_query.replace('surname', choice(data["surname"]))
+            new_query = new_query.replace('lastname', choice(data["lastname"]))
+            new_query = new_query.replace('name', choice(data["name"]))
             f.write(f'{new_query}\n')
 
 
