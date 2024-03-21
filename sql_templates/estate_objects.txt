@@ -1,1 +1,1 @@
-INSERT INTO estate_objects VALUES (object_code, district_code, 'adress', floor, room_number, building_code, current_state, price, 'descript', material, area, 'publish_date');
+INSERT INTO estate_objects VALUES (object_code, district_code, 'adress', floor, room_number, building_code, current_state, price, material, area, 'publish_date', 'object_class');

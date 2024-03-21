@@ -65,7 +65,7 @@ def agents_query() -> None:
             f.write(f'{new_query}\n')
 
 
-def random_query(name : str, n : int) -> None:
+def random_query(name : str, n : int, start_id = 0) -> None:
     """
     random_query() is used for estate_objects, ratings and deals tables.\n
     Before using it, generate all the predetermined queries\n
@@ -73,6 +73,7 @@ def random_query(name : str, n : int) -> None:
     estate_objects\n
     ratings\n
     deals
+    To specify the ID to start from, use start_id
     """
     with open(f"sql_templates/{name}.txt") as q:
         query = q.read()
@@ -82,13 +83,14 @@ def random_query(name : str, n : int) -> None:
         with open('output.txt', 'w', encoding='utf-8') as f:
             for i in range(n):
                 new_query = query
-                new_query = new_query.replace("object_code", str(base_id_object + i)).replace("district_code", str(choice(data["district_code"])))
+                new_query = new_query.replace("object_code", str(base_id_object + i + 30)).replace("district_code", str(choice(data["district_code"])))
                 new_query = new_query.replace("adress", f'{choice(data["adress"])}, {randint(10, 150)}').replace("floor", str(randint(1, 22)))
                 area = choice(data['area'])
                 new_query = new_query.replace("room_number", str(area[1])).replace("area", str(area[0]))
                 new_query = new_query.replace("building_code", str(choice(data["building_code"]))).replace("current_state", str(randint(1, 10) != 7))
                 new_query = new_query.replace("price", str(randint(10000, 40000) * 1000)).replace("descript", f'object description {i}')
                 new_query = new_query.replace("material", str(choice(data["material"])[0])).replace("publish_date", _random_date())
+                new_query = new_query.replace("object_class", choice(["эконом", "комфорт", "бизнес"]))
 
                 f.write(f'{q_start}VALUES{new_query}\n')
 
