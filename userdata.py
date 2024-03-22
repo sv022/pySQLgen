@@ -81,4 +81,4 @@ base_id_object = 1000000
 base_id_rating = 7000000
 base_id_deal = 4000000
 # university
-
+base_id_program_subject = 8000
