@@ -1,3 +1,4 @@
 /dev
 output.txt
 /__pycache__
+/queries/__pycache__

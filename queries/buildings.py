@@ -1,5 +1,5 @@
 from random import randint, choice
-from userdata import *
+from queries.userdata import *
 
 def _random_date() -> str: # helper function
     daysinmonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
@@ -13,7 +13,7 @@ def _random_date() -> str: # helper function
 
 
 def buildings_query() -> None:
-    with open(f"sql_templates/building_types.txt") as q:
+    with open(f"sql_templates/buildings/building_types.txt") as q:
         query = q.read()
 
     with open('output.txt', 'w', encoding='utf-8') as f:
@@ -23,7 +23,7 @@ def buildings_query() -> None:
 
 
 def districts_query() -> None:
-    with open(f"sql_templates/districts.txt") as q:
+    with open(f"sql_templates/buildings/districts.txt") as q:
         query = q.read()
 
     with open('output.txt', 'w', encoding='utf-8') as f:
@@ -33,7 +33,7 @@ def districts_query() -> None:
 
 
 def criterias_query() -> None:
-    with open(f"sql_templates/criterea.txt") as q:
+    with open(f"sql_templates/buildings/criterea.txt") as q:
         query = q.read()
 
     with open('output.txt', 'w', encoding='utf-8') as f:
@@ -43,7 +43,7 @@ def criterias_query() -> None:
 
 
 def materials_query():
-    with open(f"sql_templates/materials.txt") as q:
+    with open(f"sql_templates/buildings/materials.txt") as q:
         query = q.read()
 
     with open('output.txt', 'w', encoding='utf-8') as f:
@@ -53,7 +53,7 @@ def materials_query():
 
 
 def agents_query() -> None:
-    with open(f"sql_templates/agents.txt") as q:
+    with open(f"sql_templates/buildings/agents.txt") as q:
         query = q.read()
 
     with open('output.txt', 'w', encoding='utf-8') as f:
@@ -75,7 +75,7 @@ def random_query(name : str, n : int, start_id = 0) -> None:
     deals
     To specify the ID to start from, use start_id
     """
-    with open(f"sql_templates/{name}.txt") as q:
+    with open(f"sql_templates/buildings/{name}.txt") as q:
         query = q.read()
         q_start, query = query.split("VALUES")
 

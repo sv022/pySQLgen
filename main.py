@@ -1,4 +1,4 @@
-from querygen import *
+from queries.buildings import *
 
 """
 your code here

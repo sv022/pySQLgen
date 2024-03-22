@@ -1,0 +1,1 @@
+INSERT INTO enrollees VALUES (code, 'name');
