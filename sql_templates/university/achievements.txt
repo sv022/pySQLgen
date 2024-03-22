@@ -1,1 +1,1 @@
-INSERT INTO criterea VALUES (code, 'name', '');
+INSERT INTO achievements VALUES (code, 'name', bonus);
