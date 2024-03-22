@@ -1,5 +1,5 @@
 from random import randint, choice
-from queries.userdata import *
+from userdata import *
 
 def _random_date() -> str: # helper function
     daysinmonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
