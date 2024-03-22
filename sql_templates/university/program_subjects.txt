@@ -1,0 +1,1 @@
+INSERT INTO program_subjects VALUES (code, program_id, subject_id, min_result);

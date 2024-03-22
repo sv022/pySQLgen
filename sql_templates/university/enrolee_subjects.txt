@@ -1,0 +1,1 @@
+INSERT INTO enrolee_subjects VALUES (code, enrolee_id, subject_id, result);

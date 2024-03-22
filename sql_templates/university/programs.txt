@@ -1,0 +1,1 @@
+INSERT INTO programs VALUES (program_code, program_name, department_code, plan);

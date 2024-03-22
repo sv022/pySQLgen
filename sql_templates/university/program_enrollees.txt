@@ -1,0 +1,1 @@
+INSERT INTO program_enrollees VALUES (code, program_id, enrollee_id);
