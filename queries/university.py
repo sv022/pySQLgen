@@ -30,7 +30,7 @@ def achievements_query():
 
     with open(output_file, 'w', encoding='utf-8') as f:
         for code, name, bonus in data["achievements"]:
-            new_query = query.replace('code', str(code)).replace('name', name).replace('bonus', bonus)
+            new_query = query.replace('code', str(code)).replace('name', name).replace('bonus', str(bonus))
             f.write(f'{new_query}\n')
 
 
@@ -39,7 +39,7 @@ def programs_query():
         query = q.read()
 
     with open(output_file, 'w', encoding='utf-8') as f:
-        for dept_code, programs in data["edu_programs"]:
+        for dept_code, programs in data["edu_programs"].items():
             for program in programs:
                 new_query = query.replace('program_code', str(program[0])).replace('program_name', program[1])
                 new_query = new_query.replace('department_code', str(dept_code)).replace('plan', str(program[2]))
