@@ -86,3 +86,5 @@ base_id_deal = 4000000
 base_id_program_subject = 8000
 base_id_enrollee = 2000000
 base_id_enrollee_achievement = 6000000
+base_id_enrolee_subject = 50000
+base_id_program_enrollee = 1400000

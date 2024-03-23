@@ -68,23 +68,68 @@ def program_subjects_query():
                 
 
 def random_enrollee(n : int, start_index = 0):
+    """
+    n : number of queries
+    start_index : ID of enrollee to start generating from
+    """
     with open(f"{template_path}/enrollees.txt") as q:
         query = q.read()
     
     with open(output_file, 'w', encoding='utf-8') as f:
-        for i in range(start_index, n):
+        for i in range(start_index, n + start_index):
             new_query = query.replace('code', str(base_id_enrollee + i))
             new_query = new_query.replace('name', f'{choice(data["surname"])} {choice(data["name"])} {choice(data["lastname"])}')
             f.write(f'{new_query}\n')
 
 
 def random_enrollee_achievement(n : int, max_index : int, start_index = 0):
+    """
+    n : number of queries
+    max_index : biggest enrollee_id allowed
+    start_index : ID of enrollee_achievement to start generating from
+    """
     with open(f"{template_path}/enrolee_achievements.txt") as q:
         query = q.read()
     
     with open(output_file, 'w', encoding='utf-8') as f:
-        for i in range(n):
+        for i in range(start_index, n + start_index):
             new_query = query.replace('code', str(base_id_enrollee_achievement + i))
             new_query = new_query.replace('enrollee_id', str(randint(base_id_enrollee, base_id_enrollee + max_index)))
             new_query = new_query.replace('achievement_id', str(choice(data["achievements"])[0]))
+            f.write(f'{new_query}\n')
+
+
+def random_enrolee_subjects(n : int, max_index : int, start_index = 0):
+    """
+    n : number of queries
+    max_index : biggest enrollee_id allowed
+    start_index : ID of enrolee_subject to start generating from
+    """
+    with open(f"{template_path}/enrolee_subjects.txt") as q:
+        query = q.read()
+    
+    with open(output_file, 'w', encoding='utf-8') as f:
+        for i in range(start_index, n + start_index):
+            new_query = query.replace('code', str(base_id_enrolee_subject + i))
+            new_query = new_query.replace('enrollee_id', str(randint(base_id_enrollee, base_id_enrollee + max_index)))
+            new_query = new_query.replace('subject_id', str(choice(data["subjects"])[0]))
+            new_query = new_query.replace('result', str(randint(40, 100)))
+            f.write(f'{new_query}\n')
+
+
+def random_program_enrollees(n : int, max_index : int, start_index = 0):
+    """
+    n : number of queries
+    max_index : biggest enrollee_id allowed
+    start_index : ID of program_enrollee to start generating from
+    """
+    with open(f"{template_path}/program_enrollees.txt") as q:
+        query = q.read()
+    
+    with open(output_file, 'w', encoding='utf-8') as f:
+        for i in range(start_index, n + start_index):
+            new_query = query.replace('code', str(base_id_program_enrollee + i))
+            new_query = new_query.replace('program_id', str(choice(list(data["program_subjects"]))))
+            new_query = new_query.replace('enrollee_id', str(randint(base_id_enrollee, base_id_enrollee + max_index)))
+            new_query = new_query.replace('result', str(randint(40, 100)))
             f.write(f'{new_query}\n')
