@@ -4,6 +4,13 @@ template_path = 'sql_templates/university'
 output_file = 'output.txt'
 
 
+"""
+Generate queries in the following order:
+(departments_query, subjects_query, achievements_query, programs_query) --> program_subjects_query --> 
+random_enrollee --> 
+"""
+
+
 def departments_query():
     with open(f"{template_path}/departments.txt") as q:
         query = q.read()
@@ -58,3 +65,26 @@ def program_subjects_query():
             for subject in subjects:
                 new_subject_query = new_query.replace('subject_id', str(subject))
                 f.write(f'{new_subject_query}\n')
+                
+
+def random_enrollee(n : int, start_index = 0):
+    with open(f"{template_path}/enrollees.txt") as q:
+        query = q.read()
+    
+    with open(output_file, 'w', encoding='utf-8') as f:
+        for i in range(start_index, n):
+            new_query = query.replace('code', str(base_id_enrollee + i))
+            new_query = new_query.replace('name', f'{choice(data["surname"])} {choice(data["name"])} {choice(data["lastname"])}')
+            f.write(f'{new_query}\n')
+
+
+def random_enrollee_achievement(n : int, max_index : int, start_index = 0):
+    with open(f"{template_path}/enrolee_achievements.txt") as q:
+        query = q.read()
+    
+    with open(output_file, 'w', encoding='utf-8') as f:
+        for i in range(n):
+            new_query = query.replace('code', str(base_id_enrollee_achievement + i))
+            new_query = new_query.replace('enrollee_id', str(randint(base_id_enrollee, max_index)))
+            new_query = new_query.replace('achievement_id', str(choice(data["achievements"])[0]))
+            f.write(f'{new_query}\n')
