@@ -7,7 +7,7 @@ output_file = 'output.txt'
 """
 Generate queries in the following order:
 (departments_query, subjects_query, achievements_query, programs_query) --> program_subjects_query --> 
-random_enrollee --> 
+random_enrollee --> (random_enrollee_achievement, random_enrolee_subjects, random_program_enrollees)
 """
 
 
