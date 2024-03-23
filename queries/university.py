@@ -56,14 +56,13 @@ def programs_query():
 def program_subjects_query():
     with open(f"{template_path}/program_subjects.txt") as q:
         query = q.read()
-
+    i = 0
     with open(output_file, 'w', encoding='utf-8') as f:
-        for i, (program_subj_code, subjects) in enumerate(data["program_subjects"].items()):
-            new_query = query.replace('code', str(base_id_program_subject + i))
-            new_query = new_query.replace('program_id', str(program_subj_code))
-            new_query = new_query.replace('min_result', str(randint(4, 7) * 10))
+        for program_subj_code, subjects in data["program_subjects"].items():
+            new_query = query.replace('program_id', str(program_subj_code))
             for subject in subjects:
-                new_subject_query = new_query.replace('subject_id', str(subject))
+                new_subject_query = new_query.replace('subject_id', str(subject)).replace('code', str(base_id_program_subject + i)).replace('min_result', str(randint(4, 7) * 10))
+                i += 1
                 f.write(f'{new_subject_query}\n')
                 
 
