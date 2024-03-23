@@ -85,6 +85,6 @@ def random_enrollee_achievement(n : int, max_index : int, start_index = 0):
     with open(output_file, 'w', encoding='utf-8') as f:
         for i in range(n):
             new_query = query.replace('code', str(base_id_enrollee_achievement + i))
-            new_query = new_query.replace('enrollee_id', str(randint(base_id_enrollee, max_index)))
+            new_query = new_query.replace('enrollee_id', str(randint(base_id_enrollee, base_id_enrollee + max_index)))
             new_query = new_query.replace('achievement_id', str(choice(data["achievements"])[0]))
             f.write(f'{new_query}\n')
