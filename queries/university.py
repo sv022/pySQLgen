@@ -87,7 +87,7 @@ def random_enrollee_achievement(n : int, max_index : int, start_index = 0):
     max_index : biggest enrollee_id allowed
     start_index : ID of enrollee_achievement to start generating from
     """
-    with open(f"{template_path}/enrolee_achievements.txt") as q:
+    with open(f"{template_path}/enrollee_achievements.txt") as q:
         query = q.read()
     
     with open(output_file, 'w', encoding='utf-8') as f:
