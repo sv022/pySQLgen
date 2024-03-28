@@ -1,1 +1,1 @@
-INSERT INTO enrolee_subjects VALUES (code, enrollee_id, subject_id, result);
+INSERT INTO enrollee_subjects VALUES (code, enrollee_id, subject_id, result);
