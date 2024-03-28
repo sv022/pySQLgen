@@ -1,1 +1,1 @@
-INSERT INTO enrollees_achievements VALUES (code, enrollee_id, achievement_id);
+INSERT INTO enrollee_achievements VALUES (code, enrollee_id, achievement_id);
