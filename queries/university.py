@@ -93,7 +93,7 @@ def random_enrollee_achievement(n : int, max_index : int, start_index = 0):
     with open(output_file, 'w', encoding='utf-8') as f:
         for i in range(start_index, n + start_index):
             new_query = query.replace('code', str(base_id_enrollee_achievement + i))
-            new_query = new_query.replace('enrollee_id', str(randint(base_id_enrollee, base_id_enrollee + max_index)))
+            new_query = new_query.replace('enrollee_id', str(randint(base_id_enrollee, base_id_enrollee + max_index - 1)))
             new_query = new_query.replace('achievement_id', str(choice(data["achievements"])[0]))
             f.write(f'{new_query}\n')
 
@@ -104,13 +104,13 @@ def random_enrolee_subjects(n : int, max_index : int, start_index = 0):
     max_index : biggest enrollee_id allowed
     start_index : ID of enrolee_subject to start generating from
     """
-    with open(f"{template_path}/enrolee_subjects.txt") as q:
+    with open(f"{template_path}/enrollee_subjects.txt") as q:
         query = q.read()
     
     with open(output_file, 'w', encoding='utf-8') as f:
         for i in range(start_index, n + start_index):
             new_query = query.replace('code', str(base_id_enrolee_subject + i))
-            new_query = new_query.replace('enrollee_id', str(randint(base_id_enrollee, base_id_enrollee + max_index)))
+            new_query = new_query.replace('enrollee_id', str(randint(base_id_enrollee, base_id_enrollee + max_index - 1)))
             new_query = new_query.replace('subject_id', str(choice(data["subjects"])[0]))
             new_query = new_query.replace('result', str(randint(40, 100)))
             f.write(f'{new_query}\n')
@@ -129,6 +129,6 @@ def random_program_enrollees(n : int, max_index : int, start_index = 0):
         for i in range(start_index, n + start_index):
             new_query = query.replace('code', str(base_id_program_enrollee + i))
             new_query = new_query.replace('program_id', str(choice(list(data["program_subjects"]))))
-            new_query = new_query.replace('enrollee_id', str(randint(base_id_enrollee, base_id_enrollee + max_index)))
+            new_query = new_query.replace('enrollee_id', str(randint(base_id_enrollee, base_id_enrollee + max_index - 1)))
             new_query = new_query.replace('result', str(randint(40, 100)))
             f.write(f'{new_query}\n')
