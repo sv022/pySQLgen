@@ -1,0 +1,1 @@
+INSERT INTO price_changes VALUES(objectid, priceold, 'changedate');
