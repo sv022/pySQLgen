@@ -14,6 +14,6 @@ def random_shift_record(n : int):
             emp_id = randint(100, 107)
             hour = randint(10, 22)
             value = 1 if hour < 15 else 2
-            timestamp = f'2023-10-19 {hour}:{randint(0, 5)}{randint(0, 9)}:{randint(0, 5)}{randint(0, 9)}'
+            timestamp = f'2023-10-{randint(15, 22)} {hour}:{randint(0, 5)}{randint(0, 9)}:{randint(0, 5)}{randint(0, 9)}'
             new_query = query.replace('employee_id', str(emp_id)).replace('timestamp', timestamp).replace('value', str(value))
             f.write(f'{new_query}\n')
