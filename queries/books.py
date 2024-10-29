@@ -41,8 +41,8 @@ def random_book_author(n : int, max_author_index: int, max_book_index : int):
     
     with open(output_file, 'w', encoding='utf-8') as f:
         for _ in range(n):
-            author_id = randint(0, max_author_index)
-            book_id = randint(0, max_book_index)
+            author_id = randint(1, max_author_index)
+            book_id = randint(1, max_book_index)
             
             new_query = query.replace('AUTHORID', author_id).replace('BOOKID', book_id)
             f.write(f'{new_query}\n')
