@@ -44,7 +44,7 @@ def random_book_author(n : int, max_author_index: int, max_book_index : int):
             author_id = randint(1, max_author_index)
             book_id = randint(1, max_book_index)
             
-            new_query = query.replace('AUTHORID', author_id).replace('BOOKID', book_id)
+            new_query = query.replace('AUTHORID', str(author_id)).replace('BOOKID', str(book_id))
             f.write(f'{new_query}\n')
 
 
@@ -57,13 +57,14 @@ def random_catalog_entry(n : int):
             code_symbolds = [*ascii_uppercase, *digits]
             code = ''.join([choice(code_symbolds) for _ in range(10)])
             
-            name = russian_words[randint(0, len(russian_words))] + russian_words[randint(0, len(russian_words))]
+            name = russian_words[randint(0, len(russian_words))].capitalize() + choice((' ', ' и ')) + russian_words[randint(0, len(russian_words))].capitalize()
 
-            publisher = "Издательство" + russian_words[randint(0, len(russian_words))]
+            publisher = "Издательство"+ ' ' + russian_words[randint(0, len(russian_words))].capitalize()
             publish_year = randint(1990, 2024)
 
             pages = randint(40, 500)
             
             new_query = query.replace('CODE', code).replace('NAME', name).replace('PUBLISHER', publisher)
-            new_query = new_query.replace('PUBLISHYEAR', publish_year).replace('PAGES', pages)
+            new_query = new_query.replace('PUBLISHYEAR', str(publish_year)).replace('PAGES', str(pages))
             f.write(f'{new_query}\n')
+
