@@ -1,1 +1,1 @@
-INSERT INTO book_contents VALUES (CODE, BOOKID);
+INSERT INTO book_contents VALUES ('CODE', BOOKID);
