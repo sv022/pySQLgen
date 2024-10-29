@@ -1,1 +1,1 @@
-INSERT INTO authors VALUES ('NAME', 'SURNAME', 'LASTNAME');
+INSERT INTO authors(name, surname, lastname) VALUES ('NAME', 'SURNAME', 'LASTNAME');
